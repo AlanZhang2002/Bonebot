@@ -15,9 +15,7 @@ def get_food_list(tag):
     station_elements = tag.find(
         id=tag.find(class_="c-tab__list site-panel__daypart-tab-list").button.attrs['aria-controls']).div.find_all(
         class_="site-panel__daypart-item-station")
-
     items = {}
-
     # Split up by different stations
     for i in range(len(station_elements)):
         station = station_elements[i].getText()
@@ -39,7 +37,7 @@ def get_menu():
         items = []
 
         for i in soup_items:
-            if len(i) != 0:
+            if len(i) != 0 and i[0].find(class_="c-tabs").text.split()[1] == 'Specials':
                 items.append(get_food_list(i[0]))
             else:
                 items.append([])
