@@ -87,6 +87,9 @@ def menu_embed(items):
         if i != len(items) - 1:  # adds spacing between different meals
             embed.add_field(name="\u200b", value="\u200b", inline=False)
 
+    if len(embed.fields) == len(items) - 1: # empty embed, only has spacing fields
+        return "empty embed"
+
     embed.set_footer(text=get_footer_message())
 
     return embed
